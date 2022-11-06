@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-
-    <title>My page title</title>
+    <title>BezNazwy</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <script>
+        function test(){
+            var name=imie.value;
+            var surname=nazw.value;
+            
+            
+            if(name==""||surname==""||name==" "||surname==" ")
+            {
+                alert("Pole imie lub nazwisko jest puste!");
+            }
+            else
+            {
+                alert("Wysłano zgłoszenie, zadzwonimy do ciebie!");
+            }
+        }
+    </script>
 </head>
-
 <body>
     <header>
         <h1>Beznazwy</h1>
     </header>
-
     <nav>
         <ul>
             <li><a href="#">Strona główna</a></li>
@@ -23,40 +35,30 @@
             <li><a href="#">Kontakt</a></li>
         </ul>
     </nav>
-
     <main>
-
         <article>
             <h2>Strona główna</h2>
-
-
-
         </article>
-
-
         <section>
-
             <form>
-                <label for="fname">First name:</label><br>
-                <input type="text" id="fname" name="fname"><br>
-                <label for="lname">Last name:</label><br>
-                <input type="text" id="lname" name="lname">
+                <label>Imie:</label><br>
+                <input type="text" id="imie" name="imie"><br><br>
+                <label>Nazwisko:</label><br>
+                <input type="text" id="nazw" name="nazwisko"><br><br>
+                <label>Data urodzenia:</label><br>
+                <input type="date" id="data" name="data"><br><br>
+                <label>Płeć</label><br>
+                <input type="radio" id="woman" name="plec">Kobieta<br>
+                <input type="radio" id="man" name="plec">Mężczyzna<br><br>
+                <label>Wybierz kolor, ważne</label><br>
+                <input type="color" id="color" name="kolor">
                 <br>
                 <br>
-                <input type="submit" value="Submit">
-
+                <input type="submit" onclick="test()" value="Submit">
             </form>
-
-
-
-
         </section>
-
-
-
         <aside>
             <h2>Podobne</h2>
-
             <ul>
                 <li><a href="https://pl.wikipedia.org/wiki/Robert_Lewandowski" target="_blank">Polak rodak a jednak niemiec</a></li>
                 <li><a href="https://www.youtube.com/c/Xayoo" target="_blank">Idol ooo</a></li>
@@ -65,8 +67,6 @@
             </ul>
         </aside>
     </main>
-
-
     <footer>
         <p>Super strona, polecamy sie na przyszłość</p>
     </footer>
