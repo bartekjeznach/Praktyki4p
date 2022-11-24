@@ -26,9 +26,21 @@ const getMovie = async (id) => {
     .then((response) => response.json())
     .then((data) => {
     document.getElementById("box1").innerHTML = ("<h1>" + data.original_title + "</h1>")
-    document.getElementById("box1").innerHTML += ("<div class='ext'><img src='https://image.tmdb.org/t/p/w500" + data.backdrop_path + "'><br>" + data.original_title + "</div>");
+    document.getElementById("box1").innerHTML += ("<div class='ext2'><img src='https://image.tmdb.org/t/p/w500" + data.backdrop_path + "'><br>" + data.original_title + "<br> <h6>"+data.tagline+
+    "</h6> </div> <div class='ext3'>Genre: " + data.genres[0].name+ ", "+data.genres[1].name +", "+data.genres[2].name +"<br>Release date: "+data.release_date+ "<br>Runtime: "+
+    data.runtime+"min"+
+    "</div><div class='ext4'><span class='overview'>"+data.overview+"</span></div>");
     document.getElementById("box2").remove();  
     })
+    const xd = fetch("https://api.themoviedb.org/3/movie/"+id+"/credits?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US")
+    .then((response) => response.json())
+    .then((response) => {
+        document.getElementById("box1").innerHTML += (response.crew.filter(arr => arr.job == "Director")[0].name)
+    })
+    
+    
+        
+    
   };
 
 //wypisanie po genre

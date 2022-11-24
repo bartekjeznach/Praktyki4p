@@ -11,6 +11,34 @@
     color: #FBA92C;
 }
 
+.ext2 {
+    width: 300px;
+    height: 300px;
+    color: #FBA92C;
+    float: left;
+}
+
+.ext3 {
+    color: #FBA92C;
+    text-align: left;
+    margin-left: 350px;
+}
+
+.ext4{
+    width: 500px;
+    height: 100px;
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    color: #141414;
+    background-color: #FBA92C;
+}
+
+.overview{
+    margin: 5px;
+}
+
 img {
     width: 280px;
     height: 250px;
@@ -45,6 +73,14 @@ h1 {
     height: 125px;
     background: #141414;
     clear: both;
+    
+}
+
+.logoimg{
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 140px;
 }
 
 
