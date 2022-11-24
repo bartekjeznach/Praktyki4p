@@ -26,7 +26,7 @@
 
 .ext4{
     width: 500px;
-    height: 100px;
+    height: auto;
     border-radius: 15px;
     text-align: center;
     margin: auto;
@@ -38,6 +38,8 @@
 .overview{
     margin: 5px;
 }
+
+
 
 img {
     width: 280px;
