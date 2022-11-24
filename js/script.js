@@ -22,6 +22,7 @@ const mostPopularMovies = async () => {
 }
 //otwarcie strony danego filmu
 const getMovie = async (id) => {
+
     fetch("https://api.themoviedb.org/3/movie/"+id+"?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US")
     .then((response) => response.json())
     .then((data) => {
