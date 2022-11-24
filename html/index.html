@@ -6,8 +6,15 @@
         <SCRIPT src="../js/script.js" LANGUAGE="JavaScript"></SCRIPT>
     </HEAD>
     <BODY>
-        <!--<div class="ext">Tadeo Jones 3: La Tabla Esmeralda</div>
-        <img src='https://image.tmdb.org/t/p/w500/3zXceNTtyj5FLjwQXuPvLYK5YYL.jpg'>-->
-        <input type="text" id="keyword">
+        <div class="wrap">
+            <div class="search">
+               <input type="text" class="searchTerm" id="keyword" placeholder="What are you looking for?">
+               <button type="submit" class="searchButton" onclick="searchKeyword()">
+                 <i class="fa fa-search"></i>
+              </button>
+            </div>
+         </div>
+         <div id="box1"></div>
+         <div id="box2"></div>
     </BODY>
 </HTML>
