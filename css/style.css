@@ -42,10 +42,17 @@
 
 
 img {
-    width: 280px;
-    height: 250px;
+    width: 350px;
+    height: 300px;
     border-radius: 10px;
     margin-bottom: 20px;
+    transition: transform .2s; 
+    cursor: pointer;
+}
+
+img:hover{
+    transform: scale(1.1); 
+    transition: transform .2s; 
 }
 
 h1 {
@@ -62,7 +69,7 @@ h1 {
     padding-left: 10px;
     padding-top: 10px;
     margin: auto;
-    background-color: #565656;
+    background-color: #f2f2f2;
 }
 
 #box2 {
@@ -82,7 +89,13 @@ h1 {
     width: 100px;
     height: 100px;
     margin-top: 10px;
-    margin-left: 140px;
+    margin-left: 200px;
+    transition: transform .2s; 
+}
+
+.logoimg:hover{
+    transform: scale(1.25); 
+    transition: transform .2s; 
 }
 
 
@@ -95,6 +108,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
+   
 }
 
 .search {
@@ -104,12 +118,13 @@ body {
 }
 
 .searchTerm {
+    text-align: center;
     width: 100%;
     border: 3px solid #FBA92C;
     border-right: none;
     padding: 5px;
     height: 36px;
-    border-radius: 5px 0 0 5px;
+    border-radius: 10px 0 0 10px;
     outline: none;
     color: #9DBFAF;
 }
@@ -135,7 +150,71 @@ body {
 /*Resize the wrap to see the search bar change!*/
 
 .wrap {
-    width: 30%;
+    width: 25%;
     margin: auto;
     margin-bottom: 20px;
 }
+
+.hehe{
+    font-size: 20px;
+    margin: 10px;
+    margin-left: 25px;
+    font-weight: 600;
+    margin-bottom: -20px;
+}
+
+.hehe2, #director{
+    font-size: 15px;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.heheD{
+    font-size: 20px;
+    margin-left: 25px;
+    margin-bottom:10px;
+    font-weight: 600;
+}
+
+.hr1{
+    margin-bottom: -20px;
+    width: 280px;
+    margin-left: 0;
+    height: 2px;
+}
+
+.titletag{
+    text-align: center;
+    margin-left: 70px;
+}
+
+h6{
+    text-align: center;
+    margin-left: 70px;
+}
+
+.options{
+    background-color: transparent;
+    color: #FBA92C;
+}
+
+.select{
+    background-color: transparent;
+}
+
+input[type="button"]{
+    margin-left: 30px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: transform .2s linear; 
+    
+}
+
+input[type="button"]:hover{
+    transform: scale(1.35); 
+    transition: transform .2 linear; 
+    cursor: pointer;
+}
+
+
+
