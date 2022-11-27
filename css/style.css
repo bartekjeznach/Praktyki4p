@@ -28,8 +28,8 @@
     width: 500px;
     height: auto;
     border-radius: 15px;
-    text-align: center;
     margin: auto;
+    margin-left: 75px;
     margin-top: 50px;
     color: #141414;
     background-color: #FBA92C;
@@ -41,7 +41,7 @@
 
 img {
     width: 350px;
-    height: 300px;
+    height: 200px;
     border-radius: 10px;
     margin-bottom: 20px;
     transition: transform .2s;
@@ -169,8 +169,7 @@ body {
     margin-bottom: -20px;
 }
 
-.hehe2,
-#director {
+.hehe2, #director {
     font-size: 15px;
     margin-left: 20px;
     font-weight: 500;
