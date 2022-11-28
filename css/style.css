@@ -36,7 +36,7 @@
     background-color: #FBA92C;
 }
 
-.backdrop{
+.backdrop {
     width: 350px;
     height: 250px;
     border-radius: 10px;
@@ -47,24 +47,19 @@
 
 .overview {
     margin: 5px;
-    
 }
 
-#vote{
+#vote {
     height: 60px;
     width: 60px;
     background-color: #FBA92C;
     border-radius: 50%;
-    display: inline-block;   
+    display: inline-block;
     float: right;
-    
 }
 
-#odnosnik{
 
-}
-
-.votetext{
+.votetext {
     margin-top: 22px;
 }
 
@@ -103,9 +98,9 @@ h1 {
     margin-top: 50px;
 }
 
-#form{
+#form {
     text-align: center;
-    
+
 }
 
 
@@ -133,7 +128,7 @@ h1 {
 .tmdblogoimg {
     width: 80px;
     height: 80px;
-   margin-top: -110px;
+    margin-top: -110px;
     margin-left: 1600px;
     transition: transform .2s;
 }
@@ -154,13 +149,13 @@ h1 {
     text-align: center;
 }
 
-#actors{
+#actors {
     height: auto;
     background-color: #141414;
     width: 100%;
 }
 
-.maslo{
+.maslo {
     background-color: #141414;
     width: 100%;
 }
@@ -168,6 +163,7 @@ h1 {
 /*styl do searchbara*/
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 body {
     background: #f2f2f2;
     font-family: 'Open Sans', sans-serif;
@@ -227,7 +223,8 @@ body {
     margin-bottom: -20px;
 }
 
-.hehe2, #director {
+.hehe2,
+#director {
     font-size: 15px;
     margin-left: 20px;
     font-weight: 500;
@@ -279,8 +276,8 @@ input[type="button"]:hover {
     cursor: pointer;
 }
 
-.sortbutton{
-    
+.sortbutton {
+
     margin: 30px;
     background-color: transparent;
     border: 1px solid transparent;
