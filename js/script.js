@@ -15,7 +15,7 @@ const mostPopularMovies = async() => {
             if (counter == 4) {
                 break;
             }
-            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
             counter++;
         }
 
@@ -27,7 +27,13 @@ const getMovie = async(id) => {
     .then((response) => response.json())
         .then((data) => {
             document.getElementById("box1").innerHTML = ("<h1>" + data.original_title + "</h1>")
-            document.getElementById("box1").innerHTML += ("<div class='ext2'><img src='https://image.tmdb.org/t/p/w500" + data.backdrop_path + "'><br>" + "<p class='titletag'>" + data.original_title + "<br> </p> <h6>" + data.tagline + "</h6> </div> <div class='ext3'>" + "<p class='hehe'>Genre:</p> <br> <p class='hehe2'>" + data.genres[0].name + ", " + data.genres[1].name + ", " + data.genres[2].name + "</p> <hr class='hr1'> <br>" + "<p class='hehe'>Release date:</p> <br> <p class='hehe2'>" + data.release_date + "</p> <hr class='hr1'> <br>" + " <p class='hehe'>Runtime: </p><br><p class='hehe2'> " + data.runtime + "min" + "</p> <hr class='hr1'> <br> " + "<p class='heheD'>Director:</p>" + "<div id='director'></div>" + "</div><div class='ext4'><span class='overview'>" + data.overview + "</span></div>" + "<div id = 'actors'></div>");
+            document.getElementById("box1").innerHTML += ("<div class='ext2'><img src='https://image.tmdb.org/t/p/w500" + 
+            data.backdrop_path + "'><br>" + "<p class='titletag'>" + data.original_title + "<br> </p> <h6>" + 
+            data.tagline + "</h6> </div> <div class='ext3'>" + "<p class='hehe'>Genre:</p> <br> <p class='hehe2'>" + 
+            data.genres[0].name +", "+ data.genres[1].name +"</p> <hr class='hr1'> <br>" + "<p class='hehe'>Release date:</p> <br> <p class='hehe2'>" + 
+            data.release_date + "</p> <hr class='hr1'> <br>" + " <p class='hehe'>Runtime: </p><br><p class='hehe2'> " + 
+            data.runtime + "min" + "</p> <hr class='hr1'> <br> " + "<p class='heheD'>Director:</p>" + "<div id='director'></div>" + "</div><div class='ext4'><span class='overview'>" + 
+            data.overview + "</span></div>" + "<div id = 'actors'></div>");
             document.getElementById("box2").remove();
             document.getElementById("sort").remove();
             document.getElementById("wrap").remove();
@@ -43,7 +49,7 @@ const getMovie = async(id) => {
     fetch("https://api.themoviedb.org/3/movie/" + id + "/credits?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US")
         .then((response) => response.json())
         .then((actor) => {
-            for (let counter = 0; counter < 8; counter++) {
+            for (let counter = 0; counter <= 8; counter++) {
                 document.getElementById("actors").innerHTML += ("<div class = 'actors'><p class = 'actor_name'>" + actor.cast[counter].name + "</p> <img class='actorimg' src='https://image.tmdb.org/t/p/w500" + actor.cast[counter].profile_path + "'></div>");
             }
         })
@@ -52,10 +58,10 @@ const getMovie = async(id) => {
 };
 
 //wypisanie po genre
-const genreIsAction = async() => {
-        const genreAction = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(28));
+const upcomingMovies = async() => {
+        const genreAction = (await (await fetch("https://api.themoviedb.org/3/movie/upcoming?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results;
         let counter = 0;
-        document.getElementById("box2").innerHTML = ("<h1>Action movies</h1>")
+        document.getElementById("box2").innerHTML = ("<h1>Upcoming movies</h1>")
         for (const video of genreAction) {
             if (counter == 8) {
                 break;
@@ -83,17 +89,16 @@ const searchKeyword = async() => {
 
 
 mostPopularMovies();
-genreIsAction();
+upcomingMovies();
 
 
 
 //Sortowanie
 const SortIsAction = async() => {
-        const genreAction = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(28));
+        const genreAction = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=28")).json()).results;
         let counter = 0;
         document.getElementById("box1").innerHTML = ("<h1>Action movies</h1>")
-        document.getElementById("box2").remove();
-        document.getElementById("sort").remove();
+        document.getElementById("box2").innerHTML="";
         for (const video of genreAction) {
             if (counter == 16) {
                 break;
@@ -105,11 +110,10 @@ const SortIsAction = async() => {
     }
     //
 const SortIsAdventure = async() => {
-        const genreAdventure = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(12));
+        const genreAdventure = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=12")).json()).results;
         let counter = 0;
         document.getElementById("box1").innerHTML = ("<h1>Adventure movies</h1>")
-        document.getElementById("box2").remove();
-        document.getElementById("sort").remove();
+        document.getElementById("box2").innerHTML="";
         for (const video of genreAdventure) {
             if (counter == 16) {
                 break;
@@ -120,11 +124,10 @@ const SortIsAdventure = async() => {
     }
     //
 const SortIsAnimation = async() => {
-        const genreAnimation = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(16));
+        const genreAnimation = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=16")).json()).results;
         let counter = 0;
         document.getElementById("box1").innerHTML = ("<h1>Animation movies</h1>")
-        document.getElementById("box2").remove();
-        document.getElementById("sort").remove();
+        document.getElementById("box2").innerHTML="";
         for (const video of genreAnimation) {
             if (counter == 16) {
                 break;
@@ -135,11 +138,10 @@ const SortIsAnimation = async() => {
     }
     //
 const SortIsComedy = async() => {
-        const genreComedy = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(35));
+        const genreComedy = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=35")).json()).results;
         let counter = 0;
         document.getElementById("box1").innerHTML = ("<h1>Comedy movies</h1>")
-        document.getElementById("box2").remove();
-        document.getElementById("sort").remove();
+        document.getElementById("box2").innerHTML="";
         for (const video of genreComedy) {
             if (counter == 16) {
                 break;
@@ -150,11 +152,10 @@ const SortIsComedy = async() => {
     }
     //
 const SortIsCrime = async() => {
-    const genreCrime = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(80));
+    const genreCrime = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=80")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Crime movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreCrime) {
         if (counter == 16) {
             break;
@@ -166,11 +167,10 @@ const SortIsCrime = async() => {
 
 //
 const SortIsDocumentary = async() => {
-    const genreDocumentary = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids[0] == 99 || arr.genre_ids[1] == 99 || arr.genre_ids[2] == 99);
+    const genreDocumentary = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=99")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Documentary movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreDocumentary) {
         if (counter == 16) {
             break;
@@ -182,11 +182,10 @@ const SortIsDocumentary = async() => {
 
 //
 const SortIsDrama = async() => {
-        const genreDrama = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(18));
+        const genreDrama = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=18")).json()).results;
         let counter = 0;
         document.getElementById("box1").innerHTML = ("<h1>Drama movies</h1>")
-        document.getElementById("box2").remove();
-        document.getElementById("sort").remove();
+        document.getElementById("box2").innerHTML="";
         for (const video of genreDrama) {
             if (counter == 16) {
                 break;
@@ -197,11 +196,10 @@ const SortIsDrama = async() => {
     }
     //
 const SortIsFamily = async() => {
-    const genreFamily = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(10751));
+    const genreFamily = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=10751")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Family movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreFamily) {
         if (counter == 16) {
             break;
@@ -212,11 +210,10 @@ const SortIsFamily = async() => {
 }
 
 const SortIsFantasy = async() => {
-    const genreFantasy = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(14));
+    const genreFantasy = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=14")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Fantasy movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreFantasy) {
         if (counter == 16) {
             break;
@@ -227,11 +224,10 @@ const SortIsFantasy = async() => {
 }
 
 const SortIsHistory = async() => {
-    const genreHistory = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(36));
+    const genreHistory = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=36")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>History movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreHistory) {
         if (counter == 16) {
             break;
@@ -242,11 +238,10 @@ const SortIsHistory = async() => {
 }
 
 const SortIsHorror = async() => {
-    const genreHistory = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(27));
+    const genreHorror = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=27")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Horror movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreHorror) {
         if (counter == 16) {
             break;
@@ -257,11 +252,10 @@ const SortIsHorror = async() => {
 }
 
 const SortIsMusic = async() => {
-    const genreMusic = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(10402));
+    const genreMusic = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=10402")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Music movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreMusic) {
         if (counter == 16) {
             break;
@@ -272,11 +266,10 @@ const SortIsMusic = async() => {
 }
 
 const SortIsMystery = async() => {
-    const genreMystery = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(9648));
+    const genreMystery = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=9648")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Mystery movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreMystery) {
         if (counter == 16) {
             break;
@@ -287,11 +280,10 @@ const SortIsMystery = async() => {
 }
 
 const SortIsRomance = async() => {
-    const genreRomance = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(10749));
+    const genreRomance = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=10749")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Romance movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreRomance) {
         if (counter == 16) {
             break;
@@ -302,11 +294,10 @@ const SortIsRomance = async() => {
 }
 
 const SortIsScienceFiction = async() => {
-    const genreScienceFiction = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(878));
+    const genreScienceFiction = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=878")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Science Fiction movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreScienceFiction) {
         if (counter == 16) {
             break;
@@ -317,11 +308,10 @@ const SortIsScienceFiction = async() => {
 }
 
 const SortIsTVMovie = async() => {
-    const genreTVMovie = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(10770));
+    const genreTVMovie = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=10770")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>TV Movie movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreTVMovie) {
         if (counter == 16) {
             break;
@@ -332,11 +322,10 @@ const SortIsTVMovie = async() => {
 }
 
 const SortIsThriller = async() => {
-    const genreThriller = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(53));
+    const genreThriller = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=53")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Thriller movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreThriller) {
         if (counter == 16) {
             break;
@@ -347,11 +336,10 @@ const SortIsThriller = async() => {
 }
 
 const SortIsWar = async() => {
-    const genreWar = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(10752));
+    const genreWar = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=10752")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>War movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreWar) {
         if (counter == 16) {
             break;
@@ -362,11 +350,10 @@ const SortIsWar = async() => {
 }
 
 const SortIsWestern = async() => {
-    const genreWestern = (await (await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=1")).json()).results.filter(arr => arr.genre_ids.includes(37));
+    const genreWestern = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=37")).json()).results;
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Western movies</h1>")
-    document.getElementById("box2").remove();
-    document.getElementById("sort").remove();
+    document.getElementById("box2").innerHTML="";
     for (const video of genreWestern) {
         if (counter == 16) {
             break;
@@ -374,4 +361,29 @@ const SortIsWestern = async() => {
         document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
+}
+
+const saveMovie = () =>{
+    let tit=title.value;
+    let dir=ddirector.value;
+    let gen=genre.value;
+    let cas=cast.value;
+    let overview=over.value;
+
+    let text=tit+"\n"+
+    dir+"\n"+gen+"\n"+cas+"\n"+overview+"\n";
+    console.log(text);
+    var textToSaveAsBlob = new Blob([text], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    
+
+    var downloadLink = document.createElement("a");
+    downloadLink.download = 'addedMovies';
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+
+    downloadLink.click();
+    
 }
