@@ -278,3 +278,17 @@ input[type="button"]:hover {
     transition: transform .2 linear;
     cursor: pointer;
 }
+
+.sortbutton{
+    
+    margin: 30px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: transform .2s linear;
+}
+
+.sortbutton:hover {
+    transform: scale(1.35);
+    transition: transform .2 linear;
+    cursor: pointer;
+}

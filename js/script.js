@@ -38,6 +38,7 @@ const getMovie = async(id) => {
             data.runtime + "min" + "</p> <hr class='hr1'> <br> " + "<p class='heheD'>Director:</p>" + "<div id='director'></div>" + "</div><div class='ext4'><span class='overview'> " + 
             data.overview + "</span></div>" + "<div id = 'actors'></div>");
             document.getElementById("box2").remove();
+            document.getElementById("sorthehe").innerHTML="";
             document.getElementById("sort").remove();
             document.getElementById("wrap").remove();
         })
@@ -100,6 +101,7 @@ const SortIsAction = async() => {
         const genreAction = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=28")).json()).results;
         let counter = 0;
         document.getElementById("box1").innerHTML = ("<h1>Action movies</h1>")
+        document.getElementById("sorthehe").innerHTML = ("<center><input class='sortbutton' type='button' value='sort by: Popularity' id='pop' onclick='ActionSort()'>");
         document.getElementById("box2").innerHTML="";
         for (const video of genreAction) {
             if (counter == 16) {
@@ -116,6 +118,7 @@ const SortIsAdventure = async() => {
         let counter = 0;
         document.getElementById("box1").innerHTML = ("<h1>Adventure movies</h1>")
         document.getElementById("box2").innerHTML="";
+        document.getElementById("sorthehe").innerHTML="";
         for (const video of genreAdventure) {
             if (counter == 16) {
                 break;
@@ -130,6 +133,7 @@ const SortIsAnimation = async() => {
         let counter = 0;
         document.getElementById("box1").innerHTML = ("<h1>Animation movies</h1>")
         document.getElementById("box2").innerHTML="";
+        document.getElementById("sorthehe").innerHTML="";
         for (const video of genreAnimation) {
             if (counter == 16) {
                 break;
@@ -144,6 +148,7 @@ const SortIsComedy = async() => {
         let counter = 0;
         document.getElementById("box1").innerHTML = ("<h1>Comedy movies</h1>")
         document.getElementById("box2").innerHTML="";
+        document.getElementById("sorthehe").innerHTML="";
         for (const video of genreComedy) {
             if (counter == 16) {
                 break;
@@ -158,6 +163,7 @@ const SortIsCrime = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Crime movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreCrime) {
         if (counter == 16) {
             break;
@@ -173,6 +179,7 @@ const SortIsDocumentary = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Documentary movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreDocumentary) {
         if (counter == 16) {
             break;
@@ -183,11 +190,12 @@ const SortIsDocumentary = async() => {
 }
 
 //
-const SortIsDrama = async() => {
+const SortIsDrama = async() => { 
         const genreDrama = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&page=2&with_genres=18")).json()).results;
         let counter = 0;
         document.getElementById("box1").innerHTML = ("<h1>Drama movies</h1>")
         document.getElementById("box2").innerHTML="";
+        document.getElementById("sorthehe").innerHTML="";
         for (const video of genreDrama) {
             if (counter == 16) {
                 break;
@@ -195,6 +203,7 @@ const SortIsDrama = async() => {
             document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
             counter++;
         }
+
     }
     //
 const SortIsFamily = async() => {
@@ -202,6 +211,7 @@ const SortIsFamily = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Family movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreFamily) {
         if (counter == 16) {
             break;
@@ -216,6 +226,7 @@ const SortIsFantasy = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Fantasy movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreFantasy) {
         if (counter == 16) {
             break;
@@ -230,6 +241,7 @@ const SortIsHistory = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>History movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreHistory) {
         if (counter == 16) {
             break;
@@ -244,6 +256,7 @@ const SortIsHorror = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Horror movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreHorror) {
         if (counter == 16) {
             break;
@@ -258,6 +271,7 @@ const SortIsMusic = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Music movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreMusic) {
         if (counter == 16) {
             break;
@@ -272,6 +286,7 @@ const SortIsMystery = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Mystery movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreMystery) {
         if (counter == 16) {
             break;
@@ -286,6 +301,7 @@ const SortIsRomance = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Romance movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreRomance) {
         if (counter == 16) {
             break;
@@ -300,6 +316,7 @@ const SortIsScienceFiction = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Science Fiction movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreScienceFiction) {
         if (counter == 16) {
             break;
@@ -314,6 +331,7 @@ const SortIsTVMovie = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>TV Movie movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreTVMovie) {
         if (counter == 16) {
             break;
@@ -328,6 +346,7 @@ const SortIsThriller = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Thriller movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreThriller) {
         if (counter == 16) {
             break;
@@ -342,6 +361,7 @@ const SortIsWar = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>War movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreWar) {
         if (counter == 16) {
             break;
@@ -356,6 +376,7 @@ const SortIsWestern = async() => {
     let counter = 0;
     document.getElementById("box1").innerHTML = ("<h1>Western movies</h1>")
     document.getElementById("box2").innerHTML="";
+    document.getElementById("sorthehe").innerHTML="";
     for (const video of genreWestern) {
         if (counter == 16) {
             break;
@@ -364,6 +385,46 @@ const SortIsWestern = async() => {
         counter++;
     }
 }
+
+//Sortowanie 2 hehe wery draj kod
+const ActionSort = async() => {
+    const genreWestern = (await (await fetch("https://api.themoviedb.org/3/discover/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28&with_watch_monetization_types=flatrate")).json()).results;
+    let counter = 0;
+    document.getElementById("box1").innerHTML = ("<h1>Action movies by popularity</h1>")
+    document.getElementById("box2").innerHTML="";
+    for (const video of genreWestern) {
+        if (counter == 16) {
+            break;
+        }
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
+        counter++;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const saveMovie = () =>{
     let tit=title.value;
@@ -389,3 +450,4 @@ const saveMovie = () =>{
     downloadLink.click();
     
 }
+
