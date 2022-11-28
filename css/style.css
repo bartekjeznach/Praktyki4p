@@ -9,6 +9,7 @@
     text-align: center;
     padding-top: 5px;
     color: #FBA92C;
+    margin-bottom: 300px;
 }
 
 .ext2 {
@@ -35,13 +36,41 @@
     background-color: #FBA92C;
 }
 
+.backdrop{
+    width: 350px;
+    height: 250px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform .2s;
+    cursor: pointer;
+}
+
 .overview {
     margin: 5px;
+    
+}
+
+#vote{
+    height: 60px;
+    width: 60px;
+    background-color: #FBA92C;
+    border-radius: 50%;
+    display: inline-block;   
+    float: right;
+    
+}
+
+#odnosnik{
+
+}
+
+.votetext{
+    margin-top: 22px;
 }
 
 img {
     width: 350px;
-    height: 200px;
+    height: 500px;
     border-radius: 10px;
     margin-bottom: 20px;
     transition: transform .2s;
@@ -101,6 +130,19 @@ h1 {
     transition: transform .2s;
 }
 
+.tmdblogoimg {
+    width: 80px;
+    height: 80px;
+   margin-top: -110px;
+    margin-left: 1600px;
+    transition: transform .2s;
+}
+
+.tmdblogoimg:hover {
+    transform: scale(1.25);
+    transition: transform .2s;
+}
+
 .actorimg {
     height: 150px;
     width: 100px;
@@ -112,6 +154,16 @@ h1 {
     text-align: center;
 }
 
+#actors{
+    height: auto;
+    background-color: #141414;
+    width: 100%;
+}
+
+.maslo{
+    background-color: #141414;
+    width: 100%;
+}
 
 /*styl do searchbara*/
 
@@ -215,7 +267,7 @@ h6 {
 }
 
 input[type="button"] {
-    margin-left: 20px;
+    margin-left: 30px;
     background-color: transparent;
     border: 1px solid transparent;
     transition: transform .2s linear;

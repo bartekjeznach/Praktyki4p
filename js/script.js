@@ -15,7 +15,7 @@ const mostPopularMovies = async() => {
             if (counter == 4) {
                 break;
             }
-            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
+            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br> <p class='title'>" + video.original_title + "</p></div>");
             counter++;
         }
 
@@ -26,13 +26,16 @@ const getMovie = async(id) => {
 
     .then((response) => response.json())
         .then((data) => {
-            document.getElementById("box1").innerHTML = ("<h1>" + data.original_title + "</h1>")
-            document.getElementById("box1").innerHTML += ("<div class='ext2'><img src='https://image.tmdb.org/t/p/w500" + 
-            data.backdrop_path + "'><br>" + "<p class='titletag'>" + data.original_title + "<br> </p> <h6>" + 
+
+            var vote_average = Math.round(data.vote_average * 10) / 10;
+            
+            document.getElementById("box1").innerHTML = ("<h1>" + data.original_title + "</h1>"+"<div id='vote'> <p class='votetext'><b>"+ vote_average +"</p> </b> <br>("+ data.vote_count +")</div>")
+            document.getElementById("box1").innerHTML += ("<div class='ext2'><a class='odnosnik' href='https://www.themoviedb.org/movie/"+ id +"'><img class='backdrop' src='https://image.tmdb.org/t/p/w500" + 
+            data.backdrop_path + "'></a><br>" + "<p class='titletag'>" + data.original_title + "<br> </p> <h6>" + 
             data.tagline + "</h6> </div> <div class='ext3'>" + "<p class='hehe'>Genre:</p> <br> <p class='hehe2'>" + 
             data.genres[0].name +", "+ data.genres[1].name +"</p> <hr class='hr1'> <br>" + "<p class='hehe'>Release date:</p> <br> <p class='hehe2'>" + 
             data.release_date + "</p> <hr class='hr1'> <br>" + " <p class='hehe'>Runtime: </p><br><p class='hehe2'> " + 
-            data.runtime + "min" + "</p> <hr class='hr1'> <br> " + "<p class='heheD'>Director:</p>" + "<div id='director'></div>" + "</div><div class='ext4'><span class='overview'>" + 
+            data.runtime + "min" + "</p> <hr class='hr1'> <br> " + "<p class='heheD'>Director:</p>" + "<div id='director'></div>" + "</div><div class='ext4'><span class='overview'> " + 
             data.overview + "</span></div>" + "<div id = 'actors'></div>");
             document.getElementById("box2").remove();
             document.getElementById("sort").remove();
@@ -44,8 +47,6 @@ const getMovie = async(id) => {
             document.getElementById("director").innerHTML += (response.crew.filter(arr => arr.job == "Director")[0].name)
         })
 
-
-
     fetch("https://api.themoviedb.org/3/movie/" + id + "/credits?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US")
         .then((response) => response.json())
         .then((actor) => {
@@ -53,7 +54,8 @@ const getMovie = async(id) => {
                 document.getElementById("actors").innerHTML += ("<div class = 'actors'><p class = 'actor_name'>" + actor.cast[counter].name + "</p> <img class='actorimg' src='https://image.tmdb.org/t/p/w500" + actor.cast[counter].profile_path + "'></div>");
             }
         })
-
+        
+        
 
 };
 
@@ -66,10 +68,10 @@ const upcomingMovies = async() => {
             if (counter == 8) {
                 break;
             }
-            document.getElementById('box2').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+            document.getElementById('box2').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br><p class='title'>" + video.original_title + "</p></div>");
             counter++;
         }
-
+        
     }
     //wypisanie filmow po keyword
 const searchKeyword = async() => {
@@ -81,7 +83,7 @@ const searchKeyword = async() => {
         if (counter == 4) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -103,7 +105,7 @@ const SortIsAction = async() => {
             if (counter == 16) {
                 break;
             }
-            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
             counter++;
         }
 
@@ -118,7 +120,7 @@ const SortIsAdventure = async() => {
             if (counter == 16) {
                 break;
             }
-            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
             counter++;
         }
     }
@@ -132,7 +134,7 @@ const SortIsAnimation = async() => {
             if (counter == 16) {
                 break;
             }
-            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
             counter++;
         }
     }
@@ -146,7 +148,7 @@ const SortIsComedy = async() => {
             if (counter == 16) {
                 break;
             }
-            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
             counter++;
         }
     }
@@ -160,7 +162,7 @@ const SortIsCrime = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -175,7 +177,7 @@ const SortIsDocumentary = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -190,7 +192,7 @@ const SortIsDrama = async() => {
             if (counter == 16) {
                 break;
             }
-            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
             counter++;
         }
     }
@@ -204,7 +206,7 @@ const SortIsFamily = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -218,7 +220,7 @@ const SortIsFantasy = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -232,7 +234,7 @@ const SortIsHistory = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -246,7 +248,7 @@ const SortIsHorror = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -260,7 +262,7 @@ const SortIsMusic = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -274,7 +276,7 @@ const SortIsMystery = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -288,7 +290,7 @@ const SortIsRomance = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -302,7 +304,7 @@ const SortIsScienceFiction = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -316,7 +318,7 @@ const SortIsTVMovie = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -330,7 +332,7 @@ const SortIsThriller = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -344,7 +346,7 @@ const SortIsWar = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
@@ -358,7 +360,7 @@ const SortIsWestern = async() => {
         if (counter == 16) {
             break;
         }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.backdrop_path + "'><br>" + video.original_title + "</div>");
+        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
         counter++;
     }
 }
