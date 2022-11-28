@@ -7,7 +7,7 @@ Pod ocenę będą brane następujące elementy:
 2.    (17 pkt) Uwzględnienie wymagań z uwzględnieniem sytuacji wyjątkowych:
     >    --- (1 pkt) Aplikacja na początkowej stronie powinna wyświetlić panel do wyszukania filmów ---
     >    --- (1 pkt) Aplikacja na początkowej stronie powinna wyświetlić najbardziej popularne filmy w serwisie https://www.themoviedb.org ---
-    >    (1 pkt) Podczas wpisania do panelu nazwy filmów, powinno wyświetlić nazwy filmów pobranych z serwisu https://www.themoviedb.org
+    >    ---(1 pkt) Podczas wpisania do panelu nazwy filmów, powinno wyświetlić nazwy filmów pobranych z serwisu https://www.themoviedb.org
     >    (5 pkt) Każdy z pobranych filmów przez wyszukiwania powinien zawierać:
         o    --- (0.25 pkt) Tytuł filmu ---
         o    --- (0.25 pkt) Zdjęcie/plakat filmu ---
@@ -20,7 +20,7 @@ Pod ocenę będą brane następujące elementy:
         o    (1 pkt) Średnia ocen z tego filmu (z ilością oddanych głosów)
         o    (1 pkt) Możliwość obejrzenia galerii scen z tego filmu
         o    (1 pkt) Możliwość obejrzenia zwiastunu tego filmu
-    >    (2 pkt) Aplikacja powinna zawierać panel w którym będziemy wyszukiwać filmy nie tylko po słowie kluczowym, ale również po gatunku
+    >    ---(2 pkt) Aplikacja powinna zawierać panel w którym będziemy wyszukiwać filmy nie tylko po słowie kluczowym, ale również po gatunku
     >    (2 pkt) Wyszukane filmy powinny być wyświetlane z możliwością sortowania pól na przykład po roku wydania filmu
     >    (2 pkt) Aplikacja powinna pozwalać na wystawienie oceny danemu filmowi. Wówczas ocena ta powinna zostać przekazana do serwisu https://www.themoviedb.org
     >    (1 pkt) Oprócz wyszukiwania filmów z serwisu https://www.themoviedb.org aplikacja powinna zawierać panel, w którym sam można dodać film o podanych wyżej parametrach (bez galerii oraz odnośniku do serwisu https://www.themoviedb.org
