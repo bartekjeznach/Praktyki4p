@@ -23,13 +23,13 @@ Pod ocenę będą brane następujące elementy:
     >    ---(2 pkt) Aplikacja powinna zawierać panel w którym będziemy wyszukiwać filmy nie tylko po słowie kluczowym, ale również po gatunku
     >    (2 pkt) Wyszukane filmy powinny być wyświetlane z możliwością sortowania pól na przykład po roku wydania filmu
     >    (2 pkt) Aplikacja powinna pozwalać na wystawienie oceny danemu filmowi. Wówczas ocena ta powinna zostać przekazana do serwisu https://www.themoviedb.org
-    >    (1 pkt) Oprócz wyszukiwania filmów z serwisu https://www.themoviedb.org aplikacja powinna zawierać panel, w którym sam można dodać film o podanych wyżej parametrach (bez galerii oraz odnośniku do serwisu https://www.themoviedb.org
+    >    ---(1 pkt) Oprócz wyszukiwania filmów z serwisu https://www.themoviedb.org aplikacja powinna zawierać panel, w którym sam można dodać film o podanych wyżej parametrach (bez galerii oraz odnośniku do serwisu https://www.themoviedb.org
     >    (2 pkt) Aplikacja powinna wyświetlać statystyki dla danych filmów (w postaci tabeli na przykład najbardziej popularne, najbardziej popularny aktor). Im więcej statystyk tym większa liczba punktów.
 3.    (7 pkt) Styl aplikacji 
     >    --- (2 pkt) Użycie frameworka CSS np. Bootstrap lub czystego CSS ---
     >    --- (1 pkt) Funkcjonalne ułożenie elementów aplikacji ---
     >    (4 pkt) Responsywny design strony
-4.    (2 pkt) Walidacja formularzy
+4.    ---(2 pkt) Walidacja formularzy
 5.    (3 pkt) Styl i podział kodu
     >    (1 pkt) Użycie TypeScript
     >    --- (1 pkt) Sensowny podział na pliki ---

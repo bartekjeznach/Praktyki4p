@@ -53,9 +53,6 @@ const getMovie = async (id) => {
                 document.getElementById("actors").innerHTML += ("<div class = 'actors'><p class = 'actor_name'>" + actor.cast[counter].name + "</p> <img class='actorimg' src='https://image.tmdb.org/t/p/w500" + actor.cast[counter].profile_path + "'></div>");
             }
         })
-
-
-
 };
 
 //wypisanie po genre
@@ -75,26 +72,28 @@ const upcomingMovies = async () => {
 //wypisanie filmow po keyword
 const searchKeyword = async () => {
     var word = keyword.value;
-    console.log(word);
-    const search = (await (await fetch("https://api.themoviedb.org/3/search/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&query=" + word + "&page=1&include_adult=false")).json()).results;
-    let counter = 0;
-    document.getElementById("box1").innerHTML = ("<h1>You was seaching for: " + word + "</h1>");
-    document.getElementById("box2").innerHTML = "";
-    for (const video of search) {
-        if (counter == 8) {
-            break;
-        }
-        document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
-        counter++;
+    if (word == "" || word == " ") {
+        alert("Type the keyword in!")
     }
+    else {
+        console.log(word);
+        const search = (await (await fetch("https://api.themoviedb.org/3/search/movie?api_key=e794b942eda4421dec0b2efd522974f1&language=en-US&query=" + word + "&page=1&include_adult=false")).json()).results;
+        let counter = 0;
+        document.getElementById("box1").innerHTML = ("<h1>You was seaching for: " + word + "</h1>");
+        document.getElementById("box2").innerHTML = "";
+        for (const video of search) {
+            if (counter == 8) {
+                break;
+            }
+            document.getElementById('box1').innerHTML += ("<div class='ext'><img onclick='getMovie(" + video.id + ")' src='https://image.tmdb.org/t/p/w500" + video.poster_path + "'><br>" + video.original_title + "</div>");
+            counter++;
+        }
+    }
+
 }
-
-
 
 mostPopularMovies();
 upcomingMovies();
-
-
 
 //Sortowanie
 const SortIsAction = async () => {
@@ -400,54 +399,46 @@ const ActionSort = async () => {
         counter++;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const saveMovie = () => {
     let tit = title.value;
     let dir = ddirector.value;
+    let date = data.value;
     let gen = genre.value;
     let cas = cast.value;
     let overview = over.value;
 
-    let text = tit + "\n" +
-        dir + "\n" + gen + "\n" + cas + "\n" + overview + "\n";
-    console.log(text);
-    var textToSaveAsBlob = new Blob([text], { type: "text/plain" });
-    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    if (tit == "" || tit == " ") {
+        alert("Every movie needs a title!");
+    }
+    else if (dir == "" || dir == " ") {
+        alert("Every movie needs a director!");
+    }
+    else if (date == "" || date == " ") {
+        alert("Release date, maybe?");
+    }
+    else if (gen == "" || gen == " ") {
+        alert("Every movie needs a genre!");
+    }
+    else if (cas == "" || cas == " ") {
+        alert("Whos playing in the movie?");
+    }
+    else if (overview == "" || overview == " ") {
+        alert("Tell me something about the movie!");
+    }
+    else {
+        let text = "Title: " + tit + "\n" + "Director: " + dir + "\n" + "Release date: " + date + "\n" + "Genre: " + gen + "\n" + "Cast: " + cas + "\n" + "Overview: " + overview;
+        console.log(text);
+        var textToSaveAsBlob = new Blob([text], { type: "text/plain" });
+        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
 
+        var downloadLink = document.createElement("a");
+        downloadLink.download = 'addedMovies';
+        downloadLink.innerHTML = "Download File";
+        downloadLink.href = textToSaveAsURL;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
 
-    var downloadLink = document.createElement("a");
-    downloadLink.download = 'addedMovies';
-    downloadLink.innerHTML = "Download File";
-    downloadLink.href = textToSaveAsURL;
-    downloadLink.style.display = "none";
-    document.body.appendChild(downloadLink);
-
-    downloadLink.click();
-
+        downloadLink.click();
+    }
 }
 

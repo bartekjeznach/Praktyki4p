@@ -1,7 +1,7 @@
 <HTML>
 
 <HEAD>
-    <TITLE>Test Input</TITLE>
+    <TITLE>BezNazwyMovies</TITLE>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
     <SCRIPT src="../js/script.js" LANGUAGE="JavaScript"></SCRIPT>
@@ -10,6 +10,7 @@
 <BODY>
     <div class="logo">
         <a href="index.html"><img src="logo.png" class="logoimg"></a>
+        <a href="https://www.themoviedb.org"><img src="themoviedblogo.png" class="tmdblogoimg"></a>
     </div>
     <div id="form">
         <h1>Add your movies!</h1>
@@ -17,14 +18,15 @@
         <input type="text" id="title" placeholder="Enter here">
         <h3>Director</h3>
         <input type="text" id="ddirector" placeholder="Enter here">
+        <h3>Release date</h3>
+        <input type="date" id="data" required>
         <h3>Genre</h3>
         <input type="text" id="genre" placeholder="Enter here">
         <h3>Cast</h3>
         <input type="text" id="cast" placeholder="Enter here">
         <h3>Overview</h3>
-        <input type="text" id="over" placeholder="Enter here">
-        <h3>Submit</h3>
-        <input type="submit" id="btnSub" placeholder="Enter here" onclick="saveMovie()">
+        <textarea id="over" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="Send" id="btnSub" onclick="saveMovie()">
     </div>
 
 
